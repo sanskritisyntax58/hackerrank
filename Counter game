@@ -1,0 +1,14 @@
+def counterGame(n):
+    cnt = 0
+    while n > 1:
+        # check if n is power of two
+        if (n & (n - 1)) == 0:
+            n >>= 1   # divide by 2
+        else:
+            # subtract largest power of 2 less than n
+            p = 1 << (n.bit_length() - 1)
+            n -= p
+        cnt += 1
+
+    # if cnt is odd -> Louise wins (she starts first)
+    return "Louise" if cnt % 2 == 1 else "Richard"
